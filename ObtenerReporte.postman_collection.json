@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "f2c1c9a8-4ea8-4bb0-839e-e791d444c491",
+		"name": "ObtenerReporte",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:44339/api/Calidad/DescargarPdf/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"codigoAtencion\" : \"QA-1202210/9/2021\",\r\n\"codigo\" : \"ezambrano\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44339/api/Calidad/DescargarPdf/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44339",
+					"path": [
+						"api",
+						"Calidad",
+						"DescargarPdf",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

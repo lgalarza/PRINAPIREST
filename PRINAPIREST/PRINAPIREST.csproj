@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Reports\InformeCalidad.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Reports\InformeCalidad.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NPOI" Version="2.6.0" />
+    <PackageReference Include="NPOI.OOXML.dll" Version="2.0.6" />
+    <PackageReference Include="NPOI.OpenXml4Net.dll" Version="2.0.6" />
+    <PackageReference Include="NPOI.OpenXmlFormats.dll" Version="2.0.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="System.CodeDom" Version="7.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="InformeCalidad.Designer.cs">
+      <DependentUpon>InformeCalidad.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="InformeCalidad.xsc">
+      <DependentUpon>InformeCalidad.xsd</DependentUpon>
+    </None>
+    <None Update="InformeCalidad.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>InformeCalidad.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InformeCalidad.xss">
+      <DependentUpon>InformeCalidad.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Evidencia\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="B4XEncryption">
+      <HintPath>..\..\..\Encryptcion B4A\Encriptacion B4A\B4XEncryption.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="CalidadDominioDTO">
+      <HintPath>C:\Users\User\source\repos\CalidadDominioDTO\CalidadDominioDTO\bin\Release\netcoreapp3.1\CalidadDominioDTO.dll</HintPath>
+    </Reference>
+    <Reference Include="SSG.Framework.Utilidades">
+      <HintPath>..\Referencias\SSG.Framework.Utilidades.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

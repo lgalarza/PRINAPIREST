@@ -1,0 +1,26 @@
+CREATE TABLE [dbo].[parametrosCalificacion](
+	[efectoParametro] [smallint] NOT NULL,
+	[elementoParametro] [smallint] NOT NULL,
+	[convencional] [decimal](4, 2) NOT NULL,
+	[utz] [decimal](4, 2) NOT NULL,
+ CONSTRAINT [PK_parametrosCalificacion] PRIMARY KEY CLUSTERED 
+(
+	[efectoParametro] ASC,
+	[elementoParametro] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[parametrosCalificacion] ([efectoParametro], [elementoParametro], [convencional], [utz]) VALUES (15, 17, CAST(0.21 AS Decimal(4, 2)), CAST(0.18 AS Decimal(4, 2)))
+GO
+INSERT [dbo].[parametrosCalificacion] ([efectoParametro], [elementoParametro], [convencional], [utz]) VALUES (15, 18, CAST(0.28 AS Decimal(4, 2)), CAST(0.26 AS Decimal(4, 2)))
+GO
+INSERT [dbo].[parametrosCalificacion] ([efectoParametro], [elementoParametro], [convencional], [utz]) VALUES (15, 19, CAST(0.07 AS Decimal(4, 2)), CAST(0.07 AS Decimal(4, 2)))
+GO
+INSERT [dbo].[parametrosCalificacion] ([efectoParametro], [elementoParametro], [convencional], [utz]) VALUES (16, 17, CAST(0.19 AS Decimal(4, 2)), CAST(0.10 AS Decimal(4, 2)))
+GO
+INSERT [dbo].[parametrosCalificacion] ([efectoParametro], [elementoParametro], [convencional], [utz]) VALUES (16, 18, CAST(0.26 AS Decimal(4, 2)), CAST(0.21 AS Decimal(4, 2)))
+GO
+INSERT [dbo].[parametrosCalificacion] ([efectoParametro], [elementoParametro], [convencional], [utz]) VALUES (16, 19, CAST(0.05 AS Decimal(4, 2)), CAST(0.03 AS Decimal(4, 2)))
+GO
+INSERT [dbo].[parametrosCalificacion] ([efectoParametro], [elementoParametro], [convencional], [utz]) VALUES (16, 20, CAST(0.04 AS Decimal(4, 2)), CAST(0.04 AS Decimal(4, 2)))
+GO
