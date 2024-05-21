@@ -57,8 +57,7 @@
 
   <ItemGroup>
     <Reference Include="B4XEncryption">
-      <HintPath>..\..\..\Encryptcion B4A\Encriptacion B4A\B4XEncryption.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\..\Encryptcion B4A\Encriptacion B4A\B4XEncryption.dll</HintPath>
     </Reference>
     <Reference Include="BouncyCastle.Crypto">
       <HintPath>bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll</HintPath>
