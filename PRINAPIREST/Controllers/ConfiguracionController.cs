@@ -23,5 +23,31 @@ namespace PRINAPIREST.Controllers
         {
             return Ok(await _data.obtenerCatalogoxNombre(catalogo));
         }
+
+        #region Secciones
+
+        [HttpPost("MantenimientoObtenerTipoCacao")]
+        public async Task<IActionResult> MantenimientoObtenerTipoCacao([FromBody] TipoCacaoDTO secciones)
+        {
+            return Ok(await _data.mantenimientoObtenerTipoCacao(secciones));
+
+        }
+
+        [HttpPost("MantenimientoGrabarTipoCacao")]
+        public async Task<IActionResult> MantenimientoGrabarTipoCacao(TipoCacaoDTO secciones)
+        {
+            return Ok(await _data.mantenimientoGrabarTipoCacao(secciones));
+
+        }
+
+        [HttpPost("ObtenerTipoCacao")]
+        public async Task<IActionResult> ObtenerTipoCacao()
+        {
+            return Ok(await _data.obtenerTipoCacao());
+        }
+
+        
+
+        #endregion
     }
 }
