@@ -57,14 +57,14 @@
 
   <ItemGroup>
     <Reference Include="B4XEncryption">
-      <HintPath>..\..\Encryptcion B4A\Encriptacion B4A\B4XEncryption.dll</HintPath>
+      <HintPath>..\..\Encriptacion B4A\B4XEncryption.dll</HintPath>
     </Reference>
     <Reference Include="BouncyCastle.Crypto">
       <HintPath>bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll</HintPath>
       <Private>true</Private>
     </Reference>
     <Reference Include="CalidadDominioDTO">
-      <HintPath>C:\Users\User\source\repos\CalidadDominioDTO\CalidadDominioDTO\bin\Release\netcoreapp3.1\CalidadDominioDTO.dll</HintPath>
+      <HintPath>..\..\CalidadDominioDTO\CalidadDominioDTO\bin\Release\netcoreapp3.1\CalidadDominioDTO.dll</HintPath>
     </Reference>
     <Reference Include="SSG.Framework.Utilidades">
       <HintPath>..\Referencias\SSG.Framework.Utilidades.dll</HintPath>

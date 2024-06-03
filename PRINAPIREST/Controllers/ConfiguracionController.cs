@@ -24,19 +24,19 @@ namespace PRINAPIREST.Controllers
             return Ok(await _data.obtenerCatalogoxNombre(catalogo));
         }
 
-        #region Secciones
+        #region Tipo de Cacao
 
         [HttpPost("MantenimientoObtenerTipoCacao")]
-        public async Task<IActionResult> MantenimientoObtenerTipoCacao([FromBody] TipoCacaoDTO secciones)
+        public async Task<IActionResult> MantenimientoObtenerTipoCacao([FromBody] TipoCacaoDTO dato)
         {
-            return Ok(await _data.mantenimientoObtenerTipoCacao(secciones));
+            return Ok(await _data.mantenimientoObtenerTipoCacao(dato));
 
         }
 
         [HttpPost("MantenimientoGrabarTipoCacao")]
-        public async Task<IActionResult> MantenimientoGrabarTipoCacao(TipoCacaoDTO secciones)
+        public async Task<IActionResult> MantenimientoGrabarTipoCacao(TipoCacaoDTO dato)
         {
-            return Ok(await _data.mantenimientoGrabarTipoCacao(secciones));
+            return Ok(await _data.mantenimientoGrabarTipoCacao(dato));
 
         }
 
@@ -46,8 +46,32 @@ namespace PRINAPIREST.Controllers
             return Ok(await _data.obtenerTipoCacao());
         }
 
-        
 
         #endregion
+
+        #region Grupos
+        [HttpPost("MantenimientoObtenerGrupo")]
+        public async Task<IActionResult> MantenimientoObtenerGrupo([FromBody] GruposDTO dato)
+        {
+            return Ok(await _data.mantenimientoObtenerGrupo(dato));
+
+        }
+
+        [HttpPost("MantenimientoGrabarGrupo")]
+        public async Task<IActionResult> MantenimientoGrabarGrupo(GruposDTO dato)
+        {
+            return Ok(await _data.mantenimientoGrabarGrupo(dato));
+
+        }
+
+        [HttpPost("ObtenerGrupo")]
+        public async Task<IActionResult> ObtenerGrupo()
+        {
+            return Ok(await _data.obtenerGrupo());
+        }
+         
+        #endregion
+
+
     }
 }

@@ -169,7 +169,137 @@ namespace PRINAPIREST.Data
                 return new RespuestaDTO(-1, e.Message, "");
             }
         }
-        
         #endregion
+
+        #region Grupos
+        public async Task<RespuestaDTO> mantenimientoObtenerGrupo(GruposDTO dato)
+        {
+            try
+            {
+                using SqlConnection sql = new SqlConnection(_cadenaConexion);
+                using SqlCommand cmd = new SqlCommand("dbo.mantenimientoGrupos", sql);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@opcion", SqlDbType.Char, 2);
+                cmd.Parameters["@opcion"].Value = "CO";
+                cmd.Parameters.Add("@co_msg", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@ds_msg", SqlDbType.VarChar, 250).Direction = ParameterDirection.Output;
+
+                await sql.OpenAsync();
+                var reader = await cmd.ExecuteReaderAsync();
+
+                DataTable dtDatos = new DataTable();
+                dtDatos.Load(reader);
+                reader.Close();
+
+                return new RespuestaDTO(
+                    Convert.ToInt32(cmd.Parameters["@co_msg"].Value),
+                    cmd.Parameters["@ds_msg"].Value.ToString(),
+                    JsonConvert.SerializeObject(dtDatos)
+                    );
+
+            }
+            catch (Exception e)
+            {
+                return new RespuestaDTO(-1, e.Message, "");
+            }
+        }
+        public async Task<RespuestaDTO> mantenimientoGrabarGrupo(GruposDTO dato)
+        {
+            int respuesta = 0;
+            using SqlConnection sql = new SqlConnection(_cadenaConexion);
+            using SqlCommand cmd = new SqlCommand("dbo.mantenimientoGrupos", sql);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            await sql.OpenAsync();
+            SqlTransaction sqlTransaccion = sql.BeginTransaction();
+            cmd.Transaction = sqlTransaccion;
+            try
+            {
+                string opcion = string.Empty;
+
+                if (dato.codigoGrupo == 0)
+                    opcion = "IN";
+                else
+                    opcion = "AC";
+
+                cmd.Parameters.Add("@codigoGrupo", SqlDbType.SmallInt);
+                cmd.Parameters["@codigoGrupo"].Value = dato.codigoGrupo;
+                cmd.Parameters.Add("@nombreGrupo", SqlDbType.VarChar, 255);
+                cmd.Parameters["@nombreGrupo"].Value = dato.nombreGrupo;
+                cmd.Parameters.Add("@codigoZona", SqlDbType.SmallInt);
+                cmd.Parameters["@codigoZona"].Value = dato.codigoZona;
+                cmd.Parameters.Add("@estado", SqlDbType.Bit);
+                cmd.Parameters["@estado"].Value = dato.estadoGrupo;
+                cmd.Parameters.Add("@opcion", SqlDbType.Char, 2);
+                cmd.Parameters["@opcion"].Value = opcion;
+                cmd.Parameters.Add("@co_msg", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@ds_msg", SqlDbType.VarChar, 250).Direction = ParameterDirection.Output;
+                respuesta = await cmd.ExecuteNonQueryAsync();
+                sqlTransaccion.Commit();
+
+                return new RespuestaDTO(
+                    Convert.ToInt32(cmd.Parameters["@co_msg"].Value),
+                    Convert.ToString(cmd.Parameters["@ds_msg"].Value),
+                    ""
+                    );
+
+            }
+            catch (SqlException ex)
+            {
+                try
+                {
+                    sqlTransaccion.Rollback();
+                    return new RespuestaDTO(ex.ErrorCode, ex.Message, "");
+                }
+                catch (Exception ex2)
+                {
+                    return new RespuestaDTO(ex.ErrorCode, ex2.Message, "");
+                }
+            }
+            catch (Exception e)
+            {
+                return new RespuestaDTO(-1, e.Message, "");
+            }
+            finally
+            {
+                sql.Close();
+            }
+
+
+        }
+        public async Task<RespuestaDTO> obtenerGrupo()
+        {
+            try
+            {
+                using SqlConnection sql = new SqlConnection(_cadenaConexion);
+                using SqlCommand cmd = new SqlCommand("dbo.obtenerGrupos", sql);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@co_msg", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@ds_msg", SqlDbType.VarChar, 250).Direction = ParameterDirection.Output;
+
+                await sql.OpenAsync();
+                var reader = await cmd.ExecuteReaderAsync();
+                DataTable dtDatos = new DataTable();
+                dtDatos.Load(reader);
+                reader.Close();
+
+                return new RespuestaDTO(
+                    Convert.ToInt32(cmd.Parameters["@co_msg"].Value),
+                    cmd.Parameters["@ds_msg"].Value.ToString(),
+                    JsonConvert.SerializeObject(dtDatos)
+                    );
+
+            }
+            catch (Exception e)
+            {
+                return new RespuestaDTO(-1, e.Message, "");
+            }
+        }
+        #endregion
+
+        #region Certificaciones
+
+
+        #endregion
+
     }
 }
