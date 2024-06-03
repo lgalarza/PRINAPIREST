@@ -9,7 +9,7 @@ using PRINAPIREST.Models;
 using System.Globalization;
 using System.IO;
 using Newtonsoft.Json;
-using CalidadDominioDTO;
+using PRINAPIREST.Dto;
 
 namespace PRINAPIREST.Data
 {
