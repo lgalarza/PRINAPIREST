@@ -225,7 +225,7 @@ namespace PRINAPIREST.Data
                 cmd.Parameters["@codigoGrupo"].Value = dato.codigoGrupo;
                 cmd.Parameters.Add("@nombreGrupo", SqlDbType.VarChar, 250);
                 cmd.Parameters["@nombreGrupo"].Value = dato.nombreGrupo;
-                cmd.Parameters.Add("@codigoZona", SqlDbType.SmallInt);
+                cmd.Parameters.Add("@codigoZona", SqlDbType.VarChar,10);
                 cmd.Parameters["@codigoZona"].Value = dato.codigoZona;
                 cmd.Parameters.Add("@estado", SqlDbType.Bit);
                 cmd.Parameters["@estado"].Value = dato.estadoGrupo;
