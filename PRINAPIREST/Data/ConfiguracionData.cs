@@ -47,6 +47,37 @@ namespace PRINAPIREST.Data
                 throw new Exception(e.Message.ToString());
             }
         }
+        public async Task<RespuestaDTO> obtenerCatalogoxNombreWeb(CatalogoDTO catalogo)
+        {
+            try
+            {
+                using SqlConnection sql = new SqlConnection(_cadenaConexion);
+                using SqlCommand cmd = new SqlCommand("dbo.obtenerCatalogoxNombreWeb", sql);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@nombreCatalogo", SqlDbType.VarChar, 250);
+                cmd.Parameters["@nombreCatalogo"].Value = catalogo.nombreCatalogo;
+                cmd.Parameters.Add("@co_msg", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@ds_msg", SqlDbType.VarChar, 250).Direction = ParameterDirection.Output;
+
+                
+                await sql.OpenAsync();
+
+                var reader = await cmd.ExecuteReaderAsync();
+                DataTable dtDatos = new DataTable();
+                dtDatos.Load(reader);
+                reader.Close();
+
+                return new RespuestaDTO(
+                Convert.ToInt32(cmd.Parameters["@co_msg"].Value),
+                cmd.Parameters["@ds_msg"].Value.ToString(),
+                JsonConvert.SerializeObject(dtDatos)
+                );
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message.ToString());
+            }
+        }
 
         #region Tipo Cacao
         public async Task<RespuestaDTO> mantenimientoObtenerTipoCacao(TipoCacaoDTO dato)

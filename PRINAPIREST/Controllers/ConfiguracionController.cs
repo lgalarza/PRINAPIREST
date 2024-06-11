@@ -24,6 +24,12 @@ namespace PRINAPIREST.Controllers
             return Ok(await _data.obtenerCatalogoxNombre(catalogo));
         }
 
+        [HttpPost("ObtenerCatalogoxNombreWeb")]
+        public async Task<IActionResult> ObtenerCatalogoxNombreWeb(CatalogoDTO catalogo)
+        {
+            return Ok(await _data.obtenerCatalogoxNombreWeb(catalogo));
+        }
+
         #region Tipo de Cacao
 
         [HttpPost("MantenimientoObtenerTipoCacao")]
