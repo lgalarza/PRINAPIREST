@@ -715,6 +715,8 @@ namespace PRINAPIREST.Data
                 cmd.Parameters["@codigoPronosticoCosecha"].Value = dato.codigoPronosticoCosecha;
                 cmd.Parameters.Add("@codigoZona", SqlDbType.SmallInt);
                 cmd.Parameters["@codigoZona"].Value = dato.codigoZona;
+                cmd.Parameters.Add("@anio", SqlDbType.SmallInt);
+                cmd.Parameters["@anio"].Value = dato.anio;
                 cmd.Parameters.Add("@enero", SqlDbType.Decimal);
                 cmd.Parameters["@enero"].Value = dato.enero;
                 cmd.Parameters.Add("@febrero", SqlDbType.Decimal);

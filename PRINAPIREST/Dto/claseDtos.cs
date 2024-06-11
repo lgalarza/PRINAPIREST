@@ -83,5 +83,22 @@ namespace PRINAPIREST.Dto
     {
         public IList<EvidenciaDto> LineasEvidencia { get; set; }
     }
-        
+
+    public class LoginRespuestaDTO
+    {
+        public string codigoUsuario { get; set; }
+        public string numeroIdentificacion { get; set; }
+        public string nombreUsuario { get; set; }
+        public string apellidoUsuario { get; set; }
+        public byte[] claveUsuario { get; set; }
+        public string correoElectronico { get; set; }
+        public string numeroTelefono { get; set; }
+        public string codigoEmpresa { get; set; }
+        public string razonSocial { get; set; }
+        public bool estadoUsuario { get; set; }
+        public string codigoPerfil { get; set; }
+        public string nombrePerfil { get; set; }
+
+    }
+
 }

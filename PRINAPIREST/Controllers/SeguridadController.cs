@@ -9,8 +9,8 @@ using Newtonsoft.Json;
 using PRINAPIREST.Data;
 using PRINAPIREST.Models;
 using PRINAPIREST.Dto;
-using CalidadDominioDTO;
-using static CalidadDominioDTO.SeguridadDTO;
+//using CalidadDominioDTO;
+//using static CalidadDominioDTO.SeguridadDTO;
 
 namespace PRINAPIREST.Controllers
 {
