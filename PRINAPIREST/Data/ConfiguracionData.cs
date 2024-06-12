@@ -210,6 +210,8 @@ namespace PRINAPIREST.Data
                 using SqlConnection sql = new SqlConnection(_cadenaConexion);
                 using SqlCommand cmd = new SqlCommand("dbo.mantenimientoGrupos", sql);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@codigoZona", SqlDbType.SmallInt);
+                cmd.Parameters["@codigoZona"].Value = dato.codigoZona;
                 cmd.Parameters.Add("@opcion", SqlDbType.Char, 2);
                 cmd.Parameters["@opcion"].Value = "CO";
                 cmd.Parameters.Add("@co_msg", SqlDbType.Int).Direction = ParameterDirection.Output;
