@@ -381,14 +381,14 @@ namespace PRINAPIREST.Data
 
                 cmd.Parameters.Add("@codigoCertificacion", SqlDbType.SmallInt);
                 cmd.Parameters["@codigoCertificacion"].Value = dato.codigoCertificacion;
-                cmd.Parameters.Add("@codigoCertificacionAlfanumerico", SqlDbType.SmallInt);
+                cmd.Parameters.Add("@codigoCertificacionAlfanumerico", SqlDbType.VarChar,10);
                 cmd.Parameters["@codigoCertificacionAlfanumerico"].Value = dato.codigoCertificacionAlfanumerico;
                 cmd.Parameters.Add("@nombreCertificacion", SqlDbType.VarChar, 250);
                 cmd.Parameters["@nombreCertificacion"].Value = dato.nombreCertificacion;
                 cmd.Parameters.Add("@fechaInicial", SqlDbType.VarChar,10);
-                cmd.Parameters["@fechaInicial"].Value = dato.fechaInicial;
+                cmd.Parameters["@fechaInicial"].Value = ((DateTime)dato.fechaInicial).ToString("yyyy-MM-dd");
                 cmd.Parameters.Add("@fechaFinal", SqlDbType.VarChar, 10);
-                cmd.Parameters["@fechaFinal"].Value = dato.fechaFinal;
+                cmd.Parameters["@fechaFinal"].Value = ((DateTime)dato.fechaFinal).ToString("yyyy-MM-dd");
                 cmd.Parameters.Add("@toleranciaCuota", SqlDbType.Decimal);
                 cmd.Parameters["@toleranciaCuota"].Value = dato.toleranciaCuota;
                 cmd.Parameters.Add("@estado", SqlDbType.Bit);
