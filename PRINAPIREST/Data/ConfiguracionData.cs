@@ -468,6 +468,8 @@ namespace PRINAPIREST.Data
                 using SqlConnection sql = new SqlConnection(_cadenaConexion);
                 using SqlCommand cmd = new SqlCommand("dbo.mantenimientoProgramas", sql);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@codigoCertificacion", SqlDbType.SmallInt);
+                cmd.Parameters["@codigoCertificacion"].Value = dato.codigoCertificacion;
                 cmd.Parameters.Add("@opcion", SqlDbType.Char, 2);
                 cmd.Parameters["@opcion"].Value = "CO";
                 cmd.Parameters.Add("@co_msg", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -512,7 +514,7 @@ namespace PRINAPIREST.Data
 
                 cmd.Parameters.Add("@codigoPrograma", SqlDbType.SmallInt);
                 cmd.Parameters["@codigoPrograma"].Value = dato.codigoPrograma;
-                cmd.Parameters.Add("@codigoProgramaAlfanumerico", SqlDbType.VarChar, 10);
+                cmd.Parameters.Add("@codigoProgramaAlfanumerico", SqlDbType.VarChar,10);
                 cmd.Parameters["@codigoProgramaAlfanumerico"].Value = dato.codigoProgramaAlfanumerico;
                 cmd.Parameters.Add("@nombrePrograma", SqlDbType.VarChar, 250);
                 cmd.Parameters["@nombrePrograma"].Value = dato.nombrePrograma;
@@ -774,6 +776,10 @@ namespace PRINAPIREST.Data
                 cmd.Parameters["@noviembre"].Value = dato.noviembre;
                 cmd.Parameters.Add("@diciembre", SqlDbType.Decimal);
                 cmd.Parameters["@diciembre"].Value = dato.diciembre;
+                cmd.Parameters.Add("@total", SqlDbType.Decimal);
+                cmd.Parameters["@total"].Value = dato.total;
+                cmd.Parameters.Add("@factorAjuste", SqlDbType.Decimal);
+                cmd.Parameters["@factorAjuste"].Value = dato.factorAjuste;
                 cmd.Parameters.Add("@estado", SqlDbType.Bit);
                 cmd.Parameters["@estado"].Value = dato.estadoPronosticoCosecha;
                 cmd.Parameters.Add("@opcion", SqlDbType.Char, 2);
