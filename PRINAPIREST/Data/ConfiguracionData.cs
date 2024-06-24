@@ -512,7 +512,7 @@ namespace PRINAPIREST.Data
 
                 cmd.Parameters.Add("@codigoPrograma", SqlDbType.SmallInt);
                 cmd.Parameters["@codigoPrograma"].Value = dato.codigoPrograma;
-                cmd.Parameters.Add("@codigoProgramaAlfanumerico", SqlDbType.SmallInt);
+                cmd.Parameters.Add("@codigoProgramaAlfanumerico", SqlDbType.VarChar, 10);
                 cmd.Parameters["@codigoProgramaAlfanumerico"].Value = dato.codigoProgramaAlfanumerico;
                 cmd.Parameters.Add("@nombrePrograma", SqlDbType.VarChar, 250);
                 cmd.Parameters["@nombrePrograma"].Value = dato.nombrePrograma;
