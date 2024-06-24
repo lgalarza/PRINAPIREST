@@ -104,6 +104,7 @@ namespace PRINAPIREST.Dto
         public decimal? noviembre { get; set; }
         public decimal? diciembre { get; set; }
         public decimal? total { get; set; }
+        public decimal? factorAjuste { get; set; }
         public bool? estadoPronosticoCosecha { get; set; }
         public string? descripcionEstadoPronosticoCosecha { get; set; }
     }
