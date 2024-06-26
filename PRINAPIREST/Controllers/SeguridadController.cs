@@ -19,10 +19,12 @@ namespace PRINAPIREST.Controllers
     public class SeguridadController : ControllerBase
     {
         private readonly PRINData _data;
+        private readonly SeguridadData _dataSeguridad;
 
-        public SeguridadController(PRINData repositorio)
+        public SeguridadController(PRINData repositorio,SeguridadData repositorioSeguridad)
         {
             _data = repositorio ?? throw new ArgumentNullException(nameof(repositorio));
+            _dataSeguridad = repositorioSeguridad ?? throw new ArgumentNullException(nameof(repositorioSeguridad));
         }
 
         [HttpPost("ValidarUsuario")]
@@ -125,6 +127,31 @@ namespace PRINAPIREST.Controllers
                 return Ok(respuestaJson);
             }
         }
+
+        #region Perfil
+        [HttpPost("MantenimientoObtenerPerfil")]
+        public async Task<IActionResult> MantenimientoObtenerPerfil(PerfilDTO perfil)
+        {
+            return Ok(await _dataSeguridad.mantenimientoObtenerPerfil(perfil));
+        }
+
+
+        [HttpPost("MantenimientoGrabarPerfil")]
+        public async Task<IActionResult> MantenimientoGrabarPerfil(PerfilDTO perfil)
+        {
+            return Ok(await _dataSeguridad.mantenimientoGrabarPerfil(perfil));
+        }
+
+        [HttpPost("ObtenerPerfiles")]
+        public async Task<IActionResult> ObtenerPerfiles()
+        {
+            return Ok(await _dataSeguridad.obtenerPerfiles());
+
+        }
+
+        
+        #endregion
+
 
     }
 }

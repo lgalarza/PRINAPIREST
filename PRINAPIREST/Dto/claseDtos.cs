@@ -101,4 +101,13 @@ namespace PRINAPIREST.Dto
 
     }
 
+    public class PerfilDTO
+    {
+        public short codigoPerfil { get; set; }
+        public string nombrePerfil { get; set; }
+        public bool estadoPerfil { get; set; }
+        public string descripcionEstadoPerfil { get; set; }
+
+    }
+
 }

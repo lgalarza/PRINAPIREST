@@ -19,6 +19,7 @@ namespace PRINAPIREST
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<PRINData>();
+            services.AddScoped<SeguridadData>();
             services.AddScoped<ConfiguracionData>();
             services.AddControllers();
             services.AddMvc();
